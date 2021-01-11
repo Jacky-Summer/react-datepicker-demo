@@ -1,11 +1,12 @@
 import React from 'react'
-import format from 'date-fns/format'
+import moment from 'moment'
 import DatePicker from './DatePicker'
 
 const App = () => {
   return (
     <div>
-      <div>demo {format(new Date(2014, 1, 11), 'MM/dd/yyyy')}</div>
+      <div>demo {console.log(moment('11-11-2014', 'MM-DD-YYYY'))}</div>
+
       <DatePicker />
     </div>
   )

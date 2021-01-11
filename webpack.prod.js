@@ -1,11 +1,12 @@
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const webpack = require('webpack')
 // const nodeExternals = require('webpack-node-externals')
 const { merge } = require('webpack-merge')
 const commonConfig = require('./webpack.common')
 
 const { ANALYZE } = process.env
 
-const plugins = []
+const plugins = [new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-TW/)]
 
 if (ANALYZE) {
   plugins.push(new BundleAnalyzerPlugin())

@@ -1,14 +1,27 @@
-import React, { useState } from 'react'
-import DatePicker, { registerLocale } from 'react-datepicker'
-import zhTW from 'date-fns/locale/zh-TW'
+import React from 'react'
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
 
 import 'react-datepicker/dist/react-datepicker.css'
 
-registerLocale('zh-TW', zhTW)
+class ReactDatePicker extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      startDate: moment(),
+    }
+    this.handleChange = this.handleChange.bind(this)
+  }
 
-const ReactDatePicker = () => {
-  const [startDate, setStartDate] = useState(new Date())
-  return <DatePicker selected={startDate} onChange={date => setStartDate(date)} locale='zh-TW' />
+  handleChange(date) {
+    this.setState({
+      startDate: date,
+    })
+  }
+
+  render() {
+    return <DatePicker selected={this.state.startDate} onChange={this.handleChange} />
+  }
 }
 
 export default ReactDatePicker
